@@ -1,0 +1,243 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Catalogue of the Seal</title>
+
+<style>
+*{
+  box-sizing:border-box;
+}
+
+body{
+  margin:0;
+  font-family:system-ui,Arial,sans-serif;
+  background:#0f1115;
+  color:#eaeaea;
+}
+
+header{
+  padding:24px 16px;
+  text-align:center;
+  background:#151923;
+  border-bottom:1px solid #222;
+}
+
+.logo{
+  width:120px;
+  height:auto;
+  margin-bottom:10px;
+}
+
+header h1{
+  margin:0;
+  font-size:22px;
+}
+
+header p{
+  margin-top:6px;
+  opacity:.7;
+}
+
+.container{
+  display:grid;
+  grid-template-columns:repeat(auto-fit,minmax(240px,1fr));
+  gap:14px;
+  padding:16px;
+  max-width:1000px;
+  margin:auto;
+}
+
+.card-link{
+  text-decoration:none;
+  color:inherit;
+}
+
+.card{
+  background:#171b26;
+  border:1px solid #242a3a;
+  border-radius:14px;
+  padding:14px;
+  transition:.25s;
+}
+
+.card:hover{
+  transform:translateY(-6px);
+  border-color:#4c7dff;
+  box-shadow:0 0 18px rgba(76,125,255,.35);
+}
+
+.title{
+  font-size:16px;
+  margin:0 0 6px;
+}
+
+.desc{
+  font-size:12px;
+  opacity:.7;
+  margin:0 0 10px;
+}
+
+.carousel{
+  display:flex;
+  overflow-x:hidden;
+  scroll-snap-type:x mandatory;
+  border-radius:10px;
+}
+
+.carousel img{
+  width:100%;
+  flex:0 0 100%;
+  height:140px;
+  object-fit:cover;
+  border-radius:10px;
+  scroll-snap-align:center;
+}
+
+.dots{
+  display:flex;
+  justify-content:center;
+  gap:6px;
+  margin-top:10px;
+}
+
+.dots span{
+  width:8px;
+  height:8px;
+  border-radius:50%;
+  background:#444;
+  transition:.3s;
+}
+
+.dots span.active{
+  background:#4c7dff;
+}
+
+footer{
+  text-align:center;
+  padding:20px;
+  font-size:12px;
+  opacity:.5;
+}
+</style>
+</head>
+
+<body>
+
+<header>
+  <img src="seal.gif" alt="Foca" class="logo">
+
+  <h1>Catalogue of the Seal</h1>
+  <p>Hub de juegos</p>
+</header>
+
+<div class="container">
+
+  <!-- AHORCATO -->
+  <a href="https://matisu64.github.io/ahorcato/" class="card-link">
+    <div class="card">
+
+      <p class="title">Ahorcato</p>
+      <p class="desc">Juego de palabras</p>
+
+      <div class="carousel">
+        <img src="ahorcato1.png" alt="">
+        <img src="ahorcato2.png" alt="">
+        <img src="catto.png" alt="">
+      </div>
+
+      <div class="dots">
+        <span></span>
+        <span></span>
+        <span></span>
+      </div>
+
+    </div>
+  </a>
+
+  <!-- FAST -->
+  <a href="https://matisu64.github.io/fast/" class="card-link">
+    <div class="card">
+
+      <p class="title">Fast</p>
+      <p class="desc">Reflejos y velocidad</p>
+
+      <div class="carousel">
+        <img src="fast1.png" alt="">
+        <img src="fast2.png" alt="">
+        <img src="fast3.png" alt="">
+      </div>
+
+      <div class="dots">
+        <span></span>
+        <span></span>
+        <span></span>
+      </div>
+
+    </div>
+  </a>
+
+  <!-- INTELICATTO -->
+  <a href="https://matisu64.github.io/Intelicatto/" class="card-link">
+    <div class="card">
+
+      <p class="title">Intelicatto</p>
+      <p class="desc">Puzzle lógico</p>
+
+      <div class="carousel">
+        <img src="intelicato1.png" alt="">
+        <img src="intelicato2.png" alt="">
+        <img src="intelicato3.png" alt="">
+      </div>
+
+      <div class="dots">
+        <span></span>
+        <span></span>
+        <span></span>
+      </div>
+
+    </div>
+  </a>
+
+</div>
+
+<footer>
+  © Catalogue of the Seal
+</footer>
+
+<script>
+const carousels = document.querySelectorAll('.carousel');
+
+carousels.forEach(carousel => {
+
+  const images = carousel.querySelectorAll('img');
+  const dots = carousel.parentElement.querySelectorAll('.dots span');
+
+  let index = 0;
+
+  dots[0].classList.add('active');
+
+  setInterval(() => {
+
+    index++;
+
+    if(index >= images.length){
+      index = 0;
+    }
+
+    carousel.scrollTo({
+      left: carousel.clientWidth * index,
+      behavior: 'smooth'
+    });
+
+    dots.forEach(dot => dot.classList.remove('active'));
+    dots[index].classList.add('active');
+
+  }, 3000);
+
+});
+</script>
+
+</body>
+</html>
